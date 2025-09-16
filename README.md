@@ -1,6 +1,36 @@
 # aws-iam-hardening-lab
 AWS IAM Hardening Lab — JIT Admin (MFA), ABAC, PoLP, S3 hardening, CloudTrail &amp; EventBridge alerts.
 
+# 🔐 AWS IAM Hardening Lab
+
+## 📖 Introduction
+This project is a hands-on security lab focused on **Identity and Access Management (IAM)** in AWS.  
+The goal is to design, implement, and document security controls that follow **real-world best practices** while remaining easy to reproduce in a learning or demo environment.
+
+By building this lab, I wanted to strengthen both my **technical skills** (writing and applying IAM policies, monitoring with CloudTrail, enforcing MFA) and my **consulting mindset** (explaining *why* these controls matter to non-technical stakeholders).
+
+---
+
+## 🎯 Objectives
+- Apply the **Principle of Least Privilege (PoLP)** in IAM.  
+- Explore **ABAC (Attribute-Based Access Control)** for scalable permissions.  
+- Enforce strong security for **S3 buckets** (blocking public access, HTTPS-only, region restrictions).  
+- Implement **Just-in-Time (JIT) admin access** with MFA.  
+- Set up **CloudTrail and EventBridge** for monitoring and alerting.  
+- Run an **incident response drill** simulating exposed access keys.  
+
+---
+
+## 📦 Deliverables
+This repository contains:
+- ✅ JSON IAM policies (`/policies/`)  
+- ✅ EventBridge and CloudTrail configurations (`/eventbridge/`, `/cloudtrail/`)  
+- ✅ Security hardening examples for S3 (`/policies/s3-*`)  
+- ✅ Incident response reports (`/reports/`)  
+- ✅ Screenshots of test cases (`/screenshots/`)  
+
+---
+
 ## 🧩 Architecture and Security Design
 
 ### 1. Just-in-Time Admin with MFA
