@@ -218,3 +218,57 @@ aws iam delete-group --group-name Developers
 ```
 
 ---
+
+## 📑 Reports & Evidence
+
+This lab includes multiple forms of evidence to demonstrate that the security controls were **implemented, tested, and validated**.  
+The goal is to provide both **technical logs** and **visual proof** so that a reviewer can quickly verify the outcomes.
+
+---
+
+### 1. CloudTrail Reports (`/reports/cloudtrail/`)
+- Contains raw CloudTrail logs in JSON format.  
+- Examples include:
+  - **Root login attempts**  
+  - **Access key creation events**  
+  - **Denied API calls** when policies block actions  
+- **Expected proof**: shows “AccessDenied” or “MFA required” in the event logs.
+
+---
+
+### 2. AWS Config Compliance (`/reports/config/`)
+- Contains compliance snapshots from AWS Config.  
+- Demonstrates whether resources comply with security rules (e.g., MFA enabled, S3 not public).  
+- **Expected proof**: non-compliant resources are flagged until fixed.
+
+---
+
+### 3. MFA Evidence (`/screenshots/mfa/`)
+- Screenshots showing MFA setup for IAM users and the root account.  
+- **Expected proof**: console screenshot showing “MFA device assigned”.
+
+---
+
+### 4. Test Scenarios (`/screenshots/tests/`)
+- Visual proof of denied/allowed actions during test cases.  
+- Examples:
+  - A `Payments` user successfully accesses the `payments-team-data` bucket.  
+  - The same user is denied when accessing `analytics-team-data`.  
+- **Expected proof**: AWS console or CLI output showing “AccessDenied”.
+
+---
+
+### 5. Incident Drill Reports (`/reports/incidents/`)
+- Written reports of simulated incidents (e.g., exposed access key).  
+- Includes timeline of events, CloudTrail queries, and remediation steps.  
+- **Expected proof**: documented analysis of what was done and lessons learned.
+
+---
+
+### 6. Attack Scenarios (`/attacks/`)
+- Contains privilege escalation attempts.  
+- Each scenario documents:
+  - The attempted attack (e.g., creating new keys, escalating roles).  
+  - The expected outcome (denied by policy).  
+  - Logs or screenshots confirming the denial.  
+- **Expected proof**: shows that the hardening measures are effective.
