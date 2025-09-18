@@ -272,3 +272,16 @@ The goal is to provide both **technical logs** and **visual proof** so that a re
   - The expected outcome (denied by policy).  
   - Logs or screenshots confirming the denial.  
 - **Expected proof**: shows that the hardening measures are effective.
+
+---
+
+## 👤 Author
+
+**Olivier Lusamba**  
+IAM & Cloud Security Analyst / Consultant | CompTIA Security+ | Multilingual (FR, EN, ES)  
+
+I focus on Identity and Cloud Security, building hands-on labs that strengthen IAM governance, harden AWS environments, and provide practical demonstrations.  
+With a background spanning professional sports, digital consulting, and technical projects, I bring resilience, communication skills, and a results-driven mindset to cybersecurity.  
+
+- 🌐 [LinkedIn](https://www.linkedin.com/in/olivier-lusamba)  
+- 💻 [GitHub](https://github.com/olusamba)  
