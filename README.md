@@ -83,3 +83,138 @@ This repository contains:
 - **Concrete example**: CloudTrail shows that the leaked key was used to list S3 buckets. The report documents this and the corrective steps (revoking key, enabling key monitoring).  
 - **Why it matters**: Demonstrates not just prevention, but also **incident response capability** — essential for real-world security.  
 - **Expected proof**: A written incident report with logs and the mitigation actions taken.  
+
+---
+
+## ⚙️ How to Reproduce
+
+Follow these steps to replicate the AWS IAM Hardening Lab in your own AWS account.  
+This guide assumes basic familiarity with IAM, AWS CLI, and AWS console.
+
+---
+
+### 1. Prerequisites
+- ✅ An active AWS account (Free Tier is enough)  
+- ✅ AWS CLI installed and configured  
+- ✅ Git installed locally  
+- ✅ (Optional) Terraform or CloudFormation for IaC automation  
+- ✅ Basic knowledge of IAM concepts (users, groups, roles, policies)  
+
+---
+
+### 2. Clone the Repository
+```bash
+git clone git@github.com:olusamba/aws-iam-hardening-lab.git
+cd aws-iam-hardening-lab
+```
+
+---
+
+### 3. Create a Lab Admin User
+- Log in with your **root account** (only for initial setup)
+- Create a New IAM user `iam-lab-admin`.
+- Attach **AdministratorAccess** policy (temporary).
+- Generate access keys and store them securely.
+
+---
+
+### 4. Configure AWS CLI
+```bash
+aws configure
+```
+- Enter the access key/secret key for `iam-lab-admin`.
+- Choose region (e.g., `eu-west-1`).
+- Set output format to `json`.
+
+Verify setup:
+```bash
+aws s3 ls
+```
+
+---
+
+### 5. Baseline IAM Setup
+- Create IAM groups: `Admins`, `Developers`, `Auditors`.
+- Attach least-privilege policies from `/policies/`.
+- Add test IAM users to these groups.
+
+Example:
+``` bash
+aws iam create-group --group-name Admins
+aws iam attach-group-policy \
+  --group-name Admins \
+  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+```
+
+---
+
+### 5.1 ABAC with Team Tags
+- Create IAM users with tags (Payments, Analytics).
+- Create S3 buckets tagged with the same team.
+- Apply the ABAC policy from `/policies/abac-team-policy.json`.
+```bash
+aws iam create-user --user-name dev-payments --tags Key=team,Value=Payments
+aws iam create-user --user-name dev-analytics --tags Key=team,Value=Analytics
+
+aws s3api create-bucket --bucket payments-team-data --region eu-west-1
+aws s3api put-bucket-tagging \
+  --bucket payments-team-data \
+  --tagging 'TagSet=[{Key=team,Value=Payments}]'
+```
+
+**Expected result:**
+- `dev-payments` can access  `payments-team-data`.
+- `dev-payments`is **denied** if they try to access `analytics-team-data`.
+
+---
+
+### 6. Enforce MFA
+- Require MFA for all IAM users.
+- Save screenshots of setup in `/screenshots/mfa/`.
+
+---
+
+### 7. Harden Root Account
+- Remove any root access keys.
+- Enable MFA on root account.
+- Store recovery codes offline.
+
+---
+
+### 8. Apply IAM Best Practices
+- Enable **IAM Access Analyzer**.
+- Apply **Service Control Policies (SCPs)** if using AWS Organizations.
+- Use custom policies from `/policies/`.
+
+---
+
+### 9. Enable Logging & Monitoring
+- Enable **CloudTrail** in all regions.
+- Enable **AWS Config** for compliance.
+- Send logs to a dedicated S3 bucket with restricted access.
+Example:
+```bash
+aws s3api create-bucket \
+  --bucket iam-hardening-logs-$(date +%s) \
+  --region eu-west-1 \
+  --create-bucket-configuration LocationConstraint=eu-west-1
+```
+
+---
+
+### 10. Test & Validate
+- Try privilege escalation scenarios (see `/attacks/`).
+- Example: attempt `iam:CreateAccessKey` from a restricted user → should be denied.
+- Save logs and screenshots in `/screenshots/tests/`.
+
+---
+
+### 11. Cleanup
+- Remove test users, groups, and temporary policies.
+- Delete unused CloudTrail trails/buckets to avoid costs.
+```bash
+aws iam delete-user --user-name test-user
+aws iam delete-group --group-name Developers
+```
+
+---
