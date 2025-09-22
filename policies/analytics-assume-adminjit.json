@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AssumeAdminJITWithMFAForAnalytics",
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "arn:aws:iam::721094929409:role/AdminJIT",
+        "Condition": { "Bool": { "aws:MultiFactorAuthPresent": "true" } }
+      }
+    ]
+  }
+  
