@@ -5,6 +5,7 @@
         "Sid": "ABACAnalyticsS3",
         "Effect": "Allow",
         "Action": [
+          "s3:ListAllMyBuckets",
           "s3:ListBucket",
           "s3:GetObject",
           "s3:PutObject"
