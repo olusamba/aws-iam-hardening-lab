@@ -69,7 +69,7 @@ ABAC scales better by using tags across resources.
 - Deny cross-region requests ✅
 
 **Proof:**  
-![S3-Buckets](../screenshots/S3-Buckets.png)  
+![S3-Buckets](../screenshots/S3-Buckets-Overview.png)  
 ![S3-Analytics-Policy](../screenshots/S3-Analytics-Policy.png)  
 ![S3-Payments-Policy](../screenshots/S3-Payments-Policy.png)
 
@@ -81,8 +81,8 @@ ABAC scales better by using tags across resources.
 - Logs stored in dedicated CloudTrail bucket
 
 **Proof:**  
-![CloudTrail-Trail](../screenshots/CloudTrail-Trail.png)  
-![CloudTrail-Logs-Bucket](../screenshots/CloudTrail-Logs-Bucket.png)  
+![CloudTrail-Trail](../screenshots/CloudTrail-Trail-Config.png)  
+![CloudTrail-Logs-Bucket](../screenshots/S3-CloudTrailLogs-Bucket.png)  
 ![CloudTrail-Event-History](../screenshots/CloudTrail-Event-History.png)
 
 ---
@@ -109,9 +109,9 @@ ABAC scales better by using tags across resources.
 - Example: access denied on CloudTrail logs bucket
 
 **Proof:**  
-![Email-Alert-Analytics](../screenshots/Email-Alert-Analytics.png)  
-![Email-Alert-Payments](../screenshots/Email-Alert-Payments.png)  
-![Email-Alert-CloudTrail](../screenshots/Email-Alert-CloudTrail.png)
+![Email-Alert-Analytics](../screenshots/tests/Email-Alert-Analytics.png)  
+![Email-Alert-Payments](../screenshots/tests/Email-Alert-Payments.png)  
+![Email-Alert-CloudTrail](../screenshots/tests/Email-Alert-CloudTrail.png)
 
 ---
 
