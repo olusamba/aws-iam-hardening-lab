@@ -98,7 +98,7 @@ ABAC scales better by using tags across resources.
 
 **Proof:**  
 ![EventBridge-Rule-Analytics](../screenshots/EventBridge-Rule-Analytics.png)  
-![SNS-Topic](../screenshots/SNS-Topic.png)  
+![SNS-Topic](../screenshots/SNS-Topic-Analytics.png)  
 ![SNS-Subscription](../screenshots/SNS-Subscription.png)
 
 ---
@@ -111,7 +111,7 @@ ABAC scales better by using tags across resources.
 **Proof:**  
 ![Email-Alert-Analytics](../screenshots/tests/Email-Alert-Analytics.png)  
 ![Email-Alert-Payments](../screenshots/tests/Email-Alert-Payments.png)  
-![Email-Alert-CloudTrail](../screenshots/tests/Email-Alert-CloudTrail.png)
+![Email-Alert-CloudTrail](../screenshots/tests/Email-Alert-CloudTrailLogs.png)
 
 ---
 
