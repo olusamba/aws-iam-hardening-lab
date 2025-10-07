@@ -2,23 +2,45 @@
     "Version": "2012-10-17",
     "Statement": [
       {
-        "Sid": "ABACAnalyticsS3",
+        "Sid": "ListAllBucketsForConsole",
+        "Effect": "Allow",
+        "Action": "s3:ListAllMyBuckets",
+        "Resource": "*"
+      },
+      {
+        "Sid": "BucketMetadataAnalytics",
         "Effect": "Allow",
         "Action": [
-          "s3:ListAllMyBuckets",
+          "s3:GetBucketLocation",
+          "s3:GetBucketAcl",
+          "s3:GetBucketTagging",
+          "s3:GetBucketVersioning"
+        ],
+        "Resource": "arn:aws:s3:::analytics-team-data-721094929409"
+      },
+      {
+        "Sid": "ListAnalyticsObjects",
+        "Effect": "Allow",
+        "Action": [
           "s3:ListBucket",
+          "s3:ListBucketVersions"
+        ],
+        "Resource": "arn:aws:s3:::analytics-team-data-721094929409"
+      },
+      {
+        "Sid": "ReadWriteAnalyticsObjects",
+        "Effect": "Allow",
+        "Action": [
           "s3:GetObject",
           "s3:PutObject"
         ],
-        "Resource": [
-          "arn:aws:s3:::*",
-          "arn:aws:s3:::*/*"
-        ],
-        "Condition": {
-          "StringEquals": {
-            "aws:ResourceTag/team": "${aws:PrincipalTag/team}"
-          }
-        }
+        "Resource": "arn:aws:s3:::analytics-team-data-721094929409/*"
+      },
+      {
+        "Sid": "AccountLevelMetaForConsole",
+        "Effect": "Allow",
+        "Action": "s3:GetAccountPublicAccessBlock",
+        "Resource": "*"
       }
     ]
   }

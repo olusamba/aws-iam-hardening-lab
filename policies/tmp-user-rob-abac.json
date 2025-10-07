@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      { "Sid": "ListAllBucketsForConsole",
+        "Effect": "Allow",
+        "Action": "s3:ListAllMyBuckets",
+        "Resource": "*" },
+      { "Sid": "BucketMetaPayments",
+        "Effect": "Allow",
+        "Action": ["s3:GetBucketLocation"],
+        "Resource": "arn:aws:s3:::payments-team-data-721094929409",
+        "Condition": { "StringEquals": { "aws:ResourceTag/team": "Payments" } } },
+      { "Sid": "ListPaymentsObjects",
+        "Effect": "Allow",
+        "Action": ["s3:ListBucket","s3:ListBucketVersions"],
+        "Resource": "arn:aws:s3:::payments-team-data-721094929409",
+        "Condition": { "StringEquals": { "aws:ResourceTag/team": "Payments" } } }
+    ]
+  }
+  

@@ -32,9 +32,9 @@ The goal of this lab was to design, implement, and validate security controls fo
 - MFA enabled for all users ✅
 
 **Proof:**  
-![IAM-Users](../screenshots/IAM-Users.png)
-![IAM-Groups](../screenshots/IAM-Groups.png)
-![AdminJit](../screenshots/AdminJIT-created.png)
+![IAM-Users](../screenshots/IAM/IAM-Users.png)
+![IAM-Groups](../screenshots/IAM/IAM-Groups.png)
+![AdminJit](../screenshots/IAM/AdminJIT-created.png)
 ![AdminJIT-MFA](../screenshots/mfa/AdminJIT-trust-policy-MFA.png)
 
 ---
@@ -48,8 +48,8 @@ The goal of this lab was to design, implement, and validate security controls fo
 - Example: `aws:PrincipalTag/team` must match `aws:ResourceTag/team`
 
 **Proof:**  
-![IAM-Group-Analytics-Policy](../screenshots/IAM-Group-Analytics-Policy.png)  
-![IAM-Group-Developers-Policy](../screenshots/IAM-Group-Developers-Policy.png)  
+![IAM-Group-Analytics-Policy](../screenshots/IAM/IAM-Group-Analytics-Policy.png)  
+![IAM-Group-Developers-Policy](../screenshots/IAM/IAM-Group-Developers-Policy.png)  
 
 **Analysis:**  
 PoLP works but requires separate policies.  
@@ -59,8 +59,8 @@ ABAC scales better by using tags across resources.
 
 ## 📦 S3 Hardening
 ### Buckets
-- `analytics-team-data-721094929409` (Ireland - eu-west-1)
-- `payments-team-data-721094929409` (Stockholm - eu-north-1)
+- `analytics-team-data-<account-id>` (Ireland - eu-west-1)
+- `payments-team-data-<account-id>` (Stockholm - eu-north-1)
 - CloudTrail logs bucket
 
 ### Controls applied
@@ -69,9 +69,9 @@ ABAC scales better by using tags across resources.
 - Deny cross-region requests ✅
 
 **Proof:**  
-![S3-Buckets](../screenshots/S3-Buckets-Overview.png)  
-![S3-Analytics-Policy](../screenshots/S3-Analytics-Policy.png)  
-![S3-Payments-Policy](../screenshots/S3-Payments-Policy.png)
+![S3-Buckets](../screenshots/S3/S3-Buckets-Overview.png)  
+![S3-Analytics-Policy](../screenshots/S3/S3-Analytics-Policy.png)  
+![S3-Payments-Policy](../screenshots/S3/S3-Payments-Policy.png)
 
 ---
 
@@ -81,9 +81,9 @@ ABAC scales better by using tags across resources.
 - Logs stored in dedicated CloudTrail bucket
 
 **Proof:**  
-![CloudTrail-Trail](../screenshots/CloudTrail-Trail-Config.png)  
-![CloudTrail-Logs-Bucket](../screenshots/S3-CloudTrailLogs-Bucket.png)  
-![CloudTrail-Event-History](../screenshots/CloudTrail-Event-History.png)
+![CloudTrail-Trail](../screenshots/CloudTrail/CloudTrail-Trail-Config.png)  
+![CloudTrail-Logs-Bucket](../screenshots/CloudTrail/S3-CloudTrailLogs-Bucket.png)  
+![CloudTrail-Event-History](../screenshots/CloudTrail/CloudTrail-Event-History.png)
 
 ---
 
@@ -97,9 +97,9 @@ ABAC scales better by using tags across resources.
 - Email subscription confirmed
 
 **Proof:**  
-![EventBridge-Rule-Analytics](../screenshots/EventBridge-Rule-Analytics.png)  
-![SNS-Topic](../screenshots/SNS-Topic-Analytics.png)  
-![SNS-Subscription](../screenshots/SNS-Subscription.png)
+![EventBridge-Rule-Analytics](../screenshots/EventBridge/EventBridge-Rule-Analytics.png)  
+![SNS-Topic-Analytics](../screenshots/EventBridge/SNS-Topic-Analytics.png)  
+![SNS-Subscription](../screenshots/EventBridge/SNS-Subscription.png)
 
 ---
 
