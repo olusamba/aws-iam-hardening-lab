@@ -1,4 +1,9 @@
-# 🔐 AWS IAM Hardening Lab
+# 🛡️ AWS IAM Hardening Lab
+[![Release](https://img.shields.io/github/v/release/olusamba/aws-iam-hardening-lab?color=%2300A3FF)](https://github.com/olusamba/aws-iam-hardening-lab/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+AWS IAM Hardening Lab — JIT Admin (MFA), ABAC, PoLP, S3 hardening, CloudTrail & EventBridge alerts.
+
 
 ## 📖 Introduction
 This project is a hands-on security lab focused on **Identity and Access Management (IAM)** in AWS.  
